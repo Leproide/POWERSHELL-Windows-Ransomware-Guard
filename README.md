@@ -16,7 +16,6 @@ Rileva in tempo reale modifiche, cancellazioni e rinomina di file sospetti, iden
 - [Risposta attiva (process kill)](#risposta-attiva-process-kill)
 - [File generati](#file-generati)
 - [Menu di gestione](#menu-di-gestione)
-- [Sicurezza della cartella script](#sicurezza-della-cartella-script)
 - [Hardening consigliato](#hardening-consigliato)
 - [Note tecniche](#note-tecniche)
 
@@ -211,40 +210,9 @@ Tutti i file vengono creati nella stessa cartella dello script:
 
 ---
 
-## Sicurezza della cartella script
-
-> 🔒 **Raccomandazione importante**
-
-Si consiglia di **limitare i permessi della cartella** che contiene lo script e i suoi file di configurazione al solo account **SYSTEM** (e agli amministratori che devono gestirlo), rimuovendo i permessi di scrittura a tutti gli altri utenti.
-
-Questo serve a impedire che un attaccante con accesso utente standard possa:
-- Modificare lo script per disabilitare il monitoraggio
-- Cancellare `rg_config.json` o `rg_hashes.json` per rendere il watcher cieco
-- Leggere le credenziali Telegram/Gotify salvate in `rg_config.json`
-
-Per impostare i permessi da PowerShell (come Amministratore):
-
-```powershell
-$folder = "C:\RansomwareGuard"
-$acl = Get-Acl $folder
-
-# Rimuovi i permessi ereditati
-$acl.SetAccessRuleProtection($true, $false)
-
-# Aggiungi accesso completo a SYSTEM e Administrators
-$acl.AddAccessRule((New-Object Security.AccessControl.FileSystemAccessRule(
-    "NT AUTHORITY\SYSTEM", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")))
-$acl.AddAccessRule((New-Object Security.AccessControl.FileSystemAccessRule(
-    "BUILTIN\Administrators", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow")))
-
-Set-Acl $folder $acl
-```
-
----
-
 ## Hardening consigliato
 
-- **Cartella script**: accesso limitato a SYSTEM e Administrators (vedi sopra)
+- **Cartella script**: accesso limitato a SYSTEM
 - **Cartelle monitorate**: le SACL vengono impostate automaticamente; non rimuoverle
 - **Group Policy**: se la macchina è in dominio, verificare che la GPO non sovrascriva le audit policy. In tal caso richiedere all'amministratore di dominio di abilitare le sottocategorie *File System* e *Handle Manipulation* a livello di GPO. L'opzione `6` del menu di gestione può essere usata come workaround temporaneo
 - **Credenziali**: i token Telegram e Gotify sono salvati in chiaro in `rg_config.json`. Limitare i permessi di lettura del file come descritto sopra
