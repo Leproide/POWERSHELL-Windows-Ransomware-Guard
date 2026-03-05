@@ -46,7 +46,7 @@ Avvio script
 2. Apri PowerShell **come Amministratore** e sblocca l'esecuzione se necessario:
 
 ```powershell
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy RemoteSigned
 ```
 
 3. Avvia lo script:
