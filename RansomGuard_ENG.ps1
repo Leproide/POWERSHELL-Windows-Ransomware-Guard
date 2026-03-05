@@ -600,10 +600,13 @@ function Register-RGScheduledTask {
 function Enable-FolderAuditing {
     param([string[]]$Paths)
 
-    # 1. Enable "File System" audit in Windows (successes only, no performance impact)
+    # 1. Enable File System audit in Windows (successes only, no performance impact)
+    # Using GUID instead of display name: subcategory names are locale-dependent
+    # and differ between Windows languages/versions (Win11 IT/DE/FR break the string lookup).
+    # GUID {0CCE921F-69AE-11D9-BED3-505054503030} = "File System" - always works.
     try {
-        $null = & auditpol.exe /set /subcategory:"File System" /success:enable 2>&1
-        Write-Log "File System audit enabled via auditpol."
+        $auditOut = & auditpol.exe /set /subcategory:"{0CCE921F-69AE-11D9-BED3-505054503030}" /success:enable 2>&1
+        Write-Log "File System audit enabled via auditpol. Output: $auditOut"
     } catch {
         Write-Log "Unable to configure auditpol: $_" "WARN"
     }
@@ -735,7 +738,7 @@ function Invoke-HashCheck {
             $alertMsg += "`nModified files ($($alerts.Count)):`n"
             foreach ($a in $alerts) {
                 $modInfo = Get-FileModifierInfo -FilePath $a.File -LookbackMinutes 120
-                $who = if ($modInfo.Count -gt 0) {
+                $who = if (@($modInfo).Count -gt 0) {
                     $m = $modInfo[0]
                     " [Process: $($m.Process) PID:$($m.PID) User: $($m.User)]"
                 } else { " [process not found in log]" }
@@ -746,7 +749,7 @@ function Invoke-HashCheck {
             $alertMsg += "`nDeleted files ($($missingFiles.Count)):`n"
             foreach ($f in $missingFiles) {
                 $delInfo = Get-FileModifierInfo -FilePath $f -LookbackMinutes 120
-                $who = if ($delInfo.Count -gt 0) {
+                $who = if (@($delInfo).Count -gt 0) {
                     $m = $delInfo[0]
                     " [Process: $($m.Process) PID:$($m.PID) User: $($m.User)]"
                 } else { " [process not found in log]" }
