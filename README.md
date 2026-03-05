@@ -98,7 +98,7 @@ Al termine il wizard:
 - Registra il **Task pianificato** `RansomwareGuard_Monitor` (avvio automatico al boot, eseguito come SYSTEM)
 - Offre l'invio di una notifica di test
 
-Per avviare il watcher immediatamente senza riavviare:
+Per avviare il watcher immediatamente senza riavviare lanciare il task manualmente, altrimenti per test e visualizzare l'output:
 
 ```powershell
 .\RansomGuard.ps1 --watch
