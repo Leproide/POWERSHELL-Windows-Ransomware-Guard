@@ -280,3 +280,12 @@ RansomwareGuard/
 - I canary file proteggono le cartelle monitorate ma non l'intero filesystem. Scegliere cartelle ad alto valore (condivisioni di rete, backup, documenti critici).
 - Il tool è un sistema di **early warning**, non un antivirus. Rileva l'attività *dopo* che è iniziata, non la previene.
 - Buona norma prevede di modificare i permessi della cartella contenente lo script per dargli solo accesso da parte di System
+
+
+## Screenshot
+
+<img width="613" height="252" alt="immagine" src="https://github.com/user-attachments/assets/2d5f0d97-39ab-4947-a631-27e1a434aad5" />
+<img width="762" height="334" alt="immagine" src="https://github.com/user-attachments/assets/29dac68f-8449-4184-88cc-801414976df7" />
+<img width="382" height="201" alt="immagine" src="https://github.com/user-attachments/assets/aa39de87-81c5-4611-8c4b-a870bf7b13e5" />
+
+
