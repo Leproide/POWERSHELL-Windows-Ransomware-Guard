@@ -279,3 +279,4 @@ RansomwareGuard/
 - Il rilevamento del processo colpevole richiede che il Security Event Log non sia stato ruotato tra la modifica e il controllo. Su sistemi ad alto traffico aumentare la dimensione massima del log `Security` in Event Viewer.
 - I canary file proteggono le cartelle monitorate ma non l'intero filesystem. Scegliere cartelle ad alto valore (condivisioni di rete, backup, documenti critici).
 - Il tool è un sistema di **early warning**, non un antivirus. Rileva l'attività *dopo* che è iniziata, non la previene.
+- Buona norma prevede di modificare i permessi della cartella contenente lo script per dargli solo accesso da parte di System
