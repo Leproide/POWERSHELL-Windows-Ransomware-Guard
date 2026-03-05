@@ -35,7 +35,7 @@ Quando scatta un evento:
 3. L'evento viene accodato in `rg_pending.json` con tutti i dettagli (accessor, snapshot processi, hash del file al momento del rilevamento)
 4. Al ciclo successivo l'alert viene inviato su tutti i canali configurati
 
-### 2. Hash check periodico (cintura e bretelle)
+### 2. Hash check periodico (doppio check)
 Ogni N minuti (configurabile, default 15) viene ricalcolato l'SHA-256 di tutti i canary file e confrontato con il baseline salvato al setup. Rileva modifiche che possono essere sfuggite al watcher (es. eventi persi per overflow del buffer) e file scomparsi.
 
 ### Canary files
