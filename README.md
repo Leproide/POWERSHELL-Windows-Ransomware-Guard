@@ -223,7 +223,7 @@ Tutti i file vengono creati nella stessa cartella dello script:
 ## Note tecniche
 
 - **Compatibilità**: Windows 10 build 10240+, Windows 11, Windows Server 2016+. Su sistemi più vecchi il rilevamento del processo via Security log è disabilitato automaticamente e viene usato solo lo snapshot dei processi attivi
-- **Carico a riposo**: ~0% CPU, 0 scritture su disco. Il watcher usa eventi asincroni .NET (`FileSystemWatcher`) e dorme 500ms tra un ciclo e l'altro
+- **Carico a riposo**: ~0% CPU, 0 scritture su disco. Il watcher usa eventi asincroni .NET (`FileSystemWatcher`) e dorme 3 secondi tra un ciclo e l'altro
 - **Buffer FSW**: il buffer interno del `FileSystemWatcher` è configurato a 64KB (default 8KB) per ridurre il rischio di overflow silenzioso nelle sessioni SYSTEM
 - **Persistenza alert**: la coda `rg_pending.json` sopravvive a crash e riavvii. Gli alert non inviati per problemi di rete vengono ritentati al ciclo successivo
 - **Task Scheduler**: il task `RansomwareGuard_Monitor` gira come SYSTEM con riavvio automatico fino a 5 volte ogni minuto in caso di crash
