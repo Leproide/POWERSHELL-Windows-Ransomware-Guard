@@ -90,6 +90,14 @@ Il wizard interattivo guiderà attraverso:
 - Intervallo dell'hash check periodico (minimo 5 minuti, default 15)
 - Abilitazione della risposta attiva (kill del processo)
 
+Non ho volutamente mantenuto l'opzione, ma volendo cambiando la riga del kill processo si può anche spegnere la macchina per evitare la diffusione dell'infezione, basta aggiungere quanto segue sotto il Write-Log di processo terminato:
+
+```powershell
+Write-Log "PROCESSO TERMINATO: PID $($accessor.PID) ($($accessor.ProcessName)) è stato terminato." "WARN"
+Write-Log "Spegnimento macchina in corso..." "WARN"
+Stop-Computer -Force
+```
+
 Al termine il wizard:
 - Crea i canary files nelle cartelle vuote
 - Salva il baseline degli hash
