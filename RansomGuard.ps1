@@ -1,5 +1,8 @@
 ﻿#Requires -Version 5.1
 <#
+
+https://github.com/Leproide/POWERSHELL-Windows-Ransomware-Guard
+
 .SYNOPSIS
     RansomwareGuard - Honeypot file monitor con notifiche multi-canale
 .DESCRIPTION
@@ -869,5 +872,6 @@ $cfg = @{}
 $cfgRaw.PSObject.Properties | ForEach-Object { $cfg[$_.Name] = $_.Value }
 
 Invoke-HashCheck -Cfg $cfg
+
 
 Write-Log "=== RansomwareGuard terminato ==="
