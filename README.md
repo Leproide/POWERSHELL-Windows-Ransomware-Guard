@@ -284,8 +284,16 @@ RansomwareGuard/
 
 ## Screenshot
 
-<img width="613" height="252" alt="immagine" src="https://github.com/user-attachments/assets/2d5f0d97-39ab-4947-a631-27e1a434aad5" />
-<img width="762" height="334" alt="immagine" src="https://github.com/user-attachments/assets/29dac68f-8449-4184-88cc-801414976df7" />
-<img width="382" height="201" alt="immagine" src="https://github.com/user-attachments/assets/aa39de87-81c5-4611-8c4b-a870bf7b13e5" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2d5f0d97-39ab-4947-a631-27e1a434aad5" width="613">
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/29dac68f-8449-4184-88cc-801414976df7" width="762">
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/aa39de87-81c5-4611-8c4b-a870bf7b13e5" width="382">
+</p>
 
 
