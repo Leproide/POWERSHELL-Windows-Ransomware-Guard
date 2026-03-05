@@ -48,7 +48,7 @@ Script launched
 2. Open PowerShell **as Administrator** and allow script execution if needed:
 
 ```powershell
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+Set-ExecutionPolicy -Scope LocalMachine -ExecutionPolicy RemoteSigned
 ```
 
 3. Run the script:
