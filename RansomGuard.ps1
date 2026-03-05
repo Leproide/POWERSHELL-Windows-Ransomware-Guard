@@ -1,8 +1,5 @@
 ﻿#Requires -Version 5.1
 <#
-
-https://github.com/Leproide/POWERSHELL-Windows-Ransomware-Guard/
-
 .SYNOPSIS
     RansomwareGuard - Honeypot file monitor con notifiche multi-canale
 .DESCRIPTION
@@ -756,7 +753,7 @@ function Invoke-HashCheck {
             $alertMsg += "`n⚠️ File modificati ($($alerts.Count)):`n"
             foreach ($a in $alerts) {
                 $modInfo = Get-FileModifierInfo -FilePath $a.File -LookbackMinutes 120
-            $who = if ($modInfo.Count -gt 0) {
+            $who = if (@($modInfo).Count -gt 0) {
                 $m = $modInfo[0]
                 " [Processo: $($m.Process) PID:$($m.PID) Utente: $($m.User)]"
             } else { " [processo non rilevato nel log]" }
@@ -767,7 +764,7 @@ function Invoke-HashCheck {
             $alertMsg += "`n❌ File cancellati ($($missingFiles.Count)):`n"
             foreach ($f in $missingFiles) {
                 $delInfo = Get-FileModifierInfo -FilePath $f -LookbackMinutes 120
-            $who = if ($delInfo.Count -gt 0) {
+            $who = if (@($delInfo).Count -gt 0) {
                 $m = $delInfo[0]
                 " [Processo: $($m.Process) PID:$($m.PID) Utente: $($m.User)]"
             } else { " [processo non rilevato nel log]" }
