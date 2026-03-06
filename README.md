@@ -14,7 +14,7 @@ Rileva in tempo reale modifiche, cancellazioni e rinomina di file sospetti, iden
 - [Configurazione](#configurazione)
 - [Canali di notifica](#canali-di-notifica)
 - [Risposta attiva (process kill o spegnimento opzionale)](#risposta-attiva-process-kill)
-- [File generati](#file-generati)
+- [File di configurazione](#file-di-configurazione)
 - [Menu di gestione](#menu-di-gestione)
 - [Hardening consigliato](#hardening-consigliato)
 - [Note tecniche](#note-tecniche)
@@ -186,7 +186,7 @@ Se `EnableProcessKill` è abilitato, nel momento in cui viene rilevato un evento
 
 ---
 
-## File generati
+## File di configurazione
 
 Tutti i file vengono creati nella stessa cartella dello script:
 
@@ -197,7 +197,6 @@ Tutti i file vengono creati nella stessa cartella dello script:
 | `rg_log.txt` | Log completo di tutti gli eventi |
 | `rg_pending.json` | Coda persistente degli alert (sopravvive ai crash) |
 
-> I file `rg_*` sono esclusi automaticamente dal monitoraggio e dal calcolo dell'hash baseline.
 
 ---
 
