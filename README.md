@@ -13,7 +13,7 @@ Rileva in tempo reale modifiche, cancellazioni e rinomina di file sospetti, iden
 - [Modalità di esecuzione](#modalità-di-esecuzione)
 - [Configurazione](#configurazione)
 - [Canali di notifica](#canali-di-notifica)
-- [Risposta attiva (process kill)](#risposta-attiva-process-kill)
+- [Risposta attiva (process kill o spegnimento opzionale)](#risposta-attiva-process-kill)
 - [File generati](#file-generati)
 - [Menu di gestione](#menu-di-gestione)
 - [Hardening consigliato](#hardening-consigliato)
